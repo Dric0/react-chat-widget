@@ -185,6 +185,7 @@ export default App;
 |**sendButtonAlt**|string|NO|'Send'|Send button alt for a11y purposes|
 |**handleTextInputChange**|(event) => any|NO| |Prop that triggers on input change|
 |**handleSubmit**|(event) => any|NO| |Prop that triggers when a message is submitted, used for custom validation|
+|**ignoreNewUserMessage**|PropTypes.bool|NO|false|Ignore submitting new user message into chat|
 
 #### Styles
 
