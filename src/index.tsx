@@ -28,6 +28,7 @@ type Props = {
   imagePreview?: boolean;
   zoomStep?: number;
   handleSubmit?: AnyFunction;
+  ignoreNewUserMessage?: boolean;
 } & typeof defaultProps;
 
 function ConnectedWidget({
