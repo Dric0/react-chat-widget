@@ -67,11 +67,11 @@ function Widget({
       return;      
     }
     
+    handleSubmit?.(userInput);
     if (!ignoreNewUserMessage) {
-      handleSubmit?.(userInput);
       dispatch(addUserMessage(userInput));
-      handleNewUserMessage(userInput);
     }
+    handleNewUserMessage(userInput);
     event.target.message.value = '';
   }
 
