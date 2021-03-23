@@ -70,11 +70,11 @@ function Widget({
     if (handleSubmit) {
       handleSubmit(userInput);
     }
+    handleNewUserMessage(userInput);
+    event.target.message.value = '';
     if (!ignoreNewUserMessage) {
       dispatch(addUserMessage(userInput));
     }
-    handleNewUserMessage(userInput);
-    event.target.message.value = '';
   }
 
   const onQuickButtonClicked = (event, value) => {
