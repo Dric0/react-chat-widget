@@ -3,78 +3,53 @@ import React, { Component, useEffect } from 'react';
 import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader, addLinkSnippet } from '../index';
 import { addUserMessage } from '..';
 
-const App = () => {
-  const handleNewUserMessage = (newMessage: any) => {
-    console.log(`New message incoming! ${newMessage}`);
-    // Now send the message throught the backend API
-  };
+export default class App extends Component {
+  componentDidMount() {
+    addResponseMessage('Welcome to this awesome chat!');
+    addLinkSnippet({ link: 'https://google.com', title: 'Google' });
+    addResponseMessage('![](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)');
+    addResponseMessage('![vertical](https://d2sofvawe08yqg.cloudfront.net/reintroducing-react/hero2x?1556470143)');
+  }
 
-  const handleSubmit = (msgText: string) => {
-    console.log(`Message from handleSubmit: ${msgText}`);
-  };
+  handleNewUserMessage = (newMessage: any) => {
+    toggleMsgLoader();
+    setTimeout(() => {
+      toggleMsgLoader();
+      if (newMessage === 'fruits') {
+        setQuickButtons([ { label: 'Apple', value: 'apple' }, { label: 'Orange', value: 'orange' }, { label: 'Pear', value: 'pear' }, { label: 'Banana', value: 'banana' } ]);
+      } else {
+        addResponseMessage(newMessage);
+      }
+    }, 2000);
+  }
 
-  return (
-    <div>
-      <Widget
-        handleNewUserMessage={handleNewUserMessage}
-        senderPlaceHolder="Digite sua mensagem..."
-        handleSubmit={handleSubmit}
-        ignoreNewUserMessage
-      />
-    </div>
-  );
-};
+  handleQuickButtonClicked = (e: any) => {
+    addResponseMessage('Selected ' + e);
+    setQuickButtons([]);
+  }
 
-export default App;
+  handleSubmit = (msgText: string) => {
+    if(msgText.length < 80) {
+      addUserMessage("Uh oh, please write a bit more.");
+      return false;
+    }
+    return true;
+  }
 
-// export default class App extends Component {
-//   componentDidMount() {
-//     addResponseMessage('Welcome to this awesome chat!');
-//     addLinkSnippet({ link: 'https://google.com', title: 'Google' });
-//     addResponseMessage('![](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)');
-//     addResponseMessage('![vertical](https://d2sofvawe08yqg.cloudfront.net/reintroducing-react/hero2x?1556470143)');
-//   }
-
-//   handleNewUserMessage = (newMessage: any) => {
-//     toggleMsgLoader();
-//     setTimeout(() => {
-//       toggleMsgLoader();
-//       if (newMessage === 'fruits') {
-//         setQuickButtons([ { label: 'Apple', value: 'apple' }, { label: 'Orange', value: 'orange' }, { label: 'Pear', value: 'pear' }, { label: 'Banana', value: 'banana' } ]);
-//       } else {
-//         addResponseMessage(newMessage);
-//       }
-//     }, 2000);
-//   }
-
-//   handleQuickButtonClicked = (e: any) => {
-//     addResponseMessage('Selected ' + e);
-//     setQuickButtons([]);
-//   }
-
-//   handleSubmit = (msgText: string) => {
-//     if(msgText.length < 80) {
-//       addUserMessage("Uh oh, please write a bit more.");
-//       return false;
-//     }
-//     return true;
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <button style={{position: 'absolute', right: 40, bottom: 150}}>test</button>
-//         <Widget
-//           title="Bienvenido"
-//           subtitle="Asistente virtual"
-//           senderPlaceHolder="Escribe aquí ..."
-//           handleNewUserMessage={this.handleNewUserMessage}
-//           handleQuickButtonClicked={this.handleQuickButtonClicked}
-//           imagePreview
-//           handleSubmit={this.handleSubmit}
-//           ignoreNewUserMessage
-//         />
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <div>
+        <button style={{position: 'absolute', right: 40, bottom: 150}}>test</button>
+        <Widget
+          title="Bienvenido"
+          subtitle="Asistente virtual"
+          senderPlaceHolder="Escribe aquí ..."
+          handleNewUserMessage={this.handleNewUserMessage}
+          handleQuickButtonClicked={this.handleQuickButtonClicked}
+          imagePreview
+          handleSubmit={this.handleSubmit}
+        />
+      </div>
+    );
+  }
+}
