@@ -67,14 +67,12 @@ function Widget({
       return;      
     }
     
-    if (handleSubmit) {
-      handleSubmit(userInput);
-    }
-    handleNewUserMessage(userInput);
-    event.target.message.value = '';
+    handleSubmit?.(userInput);
     if (!ignoreNewUserMessage) {
       dispatch(addUserMessage(userInput));
     }
+    handleNewUserMessage(userInput);
+    event.target.message.value = '';
   }
 
   const onQuickButtonClicked = (event, value) => {
