@@ -4,12 +4,6 @@ import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader, addLinkSn
 import { addUserMessage } from '..';
 
 const App = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      addUserMessage('doce');
-    }, 5000);
-  });
-
   const handleNewUserMessage = (newMessage: any) => {
     console.log(`New message incoming! ${newMessage}`);
     // Now send the message throught the backend API
@@ -17,7 +11,6 @@ const App = () => {
 
   const handleSubmit = (msgText: string) => {
     console.log(`Message from handleSubmit: ${msgText}`);
-    addResponseMessage('batata');
   };
 
   return (
