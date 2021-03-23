@@ -27,6 +27,7 @@ type Props = {
   imagePreview?: boolean;
   zoomStep?: number;
   handleSubmit?: AnyFunction;
+  ignoreNewUserMessage?: boolean;
 }
 
 function Widget({
@@ -49,7 +50,8 @@ function Widget({
   showTimeStamp,
   imagePreview,
   zoomStep,
-  handleSubmit
+  handleSubmit,
+  ignoreNewUserMessage
 }: Props) {
   const dispatch = useDispatch();
 
@@ -64,10 +66,12 @@ function Widget({
     if (!userInput.trim()) {      
       return;      
     }
-
-    handleSubmit?.(userInput);
-    dispatch(addUserMessage(userInput));
-    handleNewUserMessage(userInput);
+    
+    if (!ignoreNewUserMessage) {
+      handleSubmit?.(userInput);
+      dispatch(addUserMessage(userInput));
+      handleNewUserMessage(userInput);
+    }
     event.target.message.value = '';
   }
 
