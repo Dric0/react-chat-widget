@@ -66,15 +66,14 @@ function Widget({
     if (!userInput.trim()) {      
       return;      
     }
-    console.log(userInput);
-    console.log('submit pressed');
     
     handleSubmit?.(userInput);
     if (!ignoreNewUserMessage) {
       dispatch(addUserMessage(userInput));
     }
     handleNewUserMessage(userInput);
-    event.target.message.value = '';
+    // event.target.message.value = '';
+    event.target.message.value = 'batata';
   }
 
   const onQuickButtonClicked = (event, value) => {
