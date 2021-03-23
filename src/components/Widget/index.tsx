@@ -66,6 +66,8 @@ function Widget({
     if (!userInput.trim()) {      
       return;      
     }
+    console.log(userInput);
+    console.log('submit pressed');
     
     handleSubmit?.(userInput);
     if (!ignoreNewUserMessage) {
