@@ -66,12 +66,10 @@ function Widget({
     if (!userInput.trim()) {      
       return;      
     }
-
-    if (ignoreNewUserMessage) {
-      console.error('ignoreNewUserMessage');
-    }
     
-    handleSubmit?.(userInput);
+    if (handleSubmit) {
+      handleSubmit(userInput);
+    }
     if (!ignoreNewUserMessage) {
       dispatch(addUserMessage(userInput));
     }
