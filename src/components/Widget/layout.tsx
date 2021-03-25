@@ -110,7 +110,9 @@ function WidgetLayout({
     <div
       className={cn('rcw-widget-container', {
         'rcw-full-screen': fullScreenMode,
-        'rcw-previewer': imagePreview
+        'rcw-previewer': imagePreview,
+        'hide-chat': !showChat,
+        'show-chat': showChat
         })
       }
     >

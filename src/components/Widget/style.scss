@@ -9,7 +9,7 @@
   max-width: 370px;
   position: fixed;
   right: 0;
-  width: 90vw;
+  // width: 90vw;
   z-index: 9999;
 }
 
@@ -17,10 +17,24 @@
   @include widget-container-fs;
 }
 
-@media screen and (max-width: 800px) {
-  .rcw-widget-container {
+.rcw-widget-container.hide-chat {
+  height: auto;
+  width: auto;
+}
+
+@media screen and (min-width: 601px) {
+  .rcw-widget-container.show-chat {
+    width: 100%;
+    max-width: 370px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .rcw-widget-container.show-chat {
     height: 100%;
-    @include widget-container-fs;
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
   }
 }
 
