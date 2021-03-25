@@ -50,7 +50,7 @@ function Conversation({
       <Header
         title={title}
         subtitle={subtitle}
-        toggleChat={toggleChat}
+        toggle={toggleChat}
         showCloseButton={showCloseButton}
         titleAvatar={titleAvatar}
       />

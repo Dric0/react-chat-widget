@@ -1,4 +1,8 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { GlobalState } from '../../../../../../store/types';
+import { setBadgeCount } from '../../../../../../store/actions';
 
 const close = require('../../../../../../../assets/clear-button.svg') as string;
 
@@ -7,12 +11,21 @@ import './style.scss';
 type Props = {
   title: string;
   subtitle: string;
-  toggleChat: () => void;
+  toggle: () => void;
   showCloseButton: boolean;
   titleAvatar?: string;
 }
 
-function Header({ title, subtitle, toggleChat, showCloseButton, titleAvatar }: Props) {
+function Header({ title, subtitle, toggle, showCloseButton, titleAvatar }: Props) {
+  const dispatch = useDispatch();
+  const { showChat } = useSelector((state: GlobalState) => ({
+    showChat: state.behavior.showChat
+  }));
+  const toggleChat = () => {
+    toggle();
+    if (!showChat) dispatch(setBadgeCount(0));
+  }
+
   return (
     <div className="rcw-header">
       {showCloseButton &&
