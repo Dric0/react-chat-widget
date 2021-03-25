@@ -28,6 +28,7 @@ type Props = {
   zoomStep?: number;
   handleSubmit?: AnyFunction;
   ignoreNewUserMessage?: boolean;
+  customCloseButton?: AnyFunction;
 }
 
 function Widget({
@@ -51,7 +52,8 @@ function Widget({
   imagePreview,
   zoomStep,
   handleSubmit,
-  ignoreNewUserMessage
+  ignoreNewUserMessage,
+  customCloseButton,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -102,6 +104,7 @@ function Widget({
       showTimeStamp={showTimeStamp}
       imagePreview={imagePreview}
       zoomStep={zoomStep}
+      customCloseButton={customCloseButton}
     />
   );
 }

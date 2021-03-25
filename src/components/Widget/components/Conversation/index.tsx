@@ -26,6 +26,7 @@ type Props = {
   onTextInputChange?: (event: any) => void;
   sendButtonAlt: string;
   showTimeStamp: boolean;
+  customCloseButton?: AnyFunction;
 };
 
 function Conversation({
@@ -43,7 +44,8 @@ function Conversation({
   onQuickButtonClicked,
   onTextInputChange,
   sendButtonAlt,
-  showTimeStamp
+  showTimeStamp,
+  customCloseButton,
 }: Props) {
   return (
     <div className={cn('rcw-conversation-container', className)} aria-live="polite">
@@ -53,6 +55,7 @@ function Conversation({
         toggle={toggleChat}
         showCloseButton={showCloseButton}
         titleAvatar={titleAvatar}
+        customCloseButton={customCloseButton}
       />
       <Messages profileAvatar={profileAvatar} showTimeStamp={showTimeStamp} />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />

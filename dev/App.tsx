@@ -36,6 +36,14 @@ export default class App extends Component {
     return true;
   }
 
+  customCloseButton = (handleToggle) => {
+    return (
+      <button className="rcw-close-button" onClick={handleToggle}>
+        X
+      </button>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -48,6 +56,7 @@ export default class App extends Component {
           handleQuickButtonClicked={this.handleQuickButtonClicked}
           imagePreview
           handleSubmit={this.handleSubmit}
+          customCloseButton={this.customCloseButton}
         />
       </div>
     );

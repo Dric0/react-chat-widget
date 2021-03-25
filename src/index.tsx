@@ -29,6 +29,7 @@ type Props = {
   zoomStep?: number;
   handleSubmit?: AnyFunction;
   ignoreNewUserMessage?: boolean;
+  customCloseButton?: AnyFunction;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -52,7 +53,8 @@ function ConnectedWidget({
   imagePreview,
   zoomStep,
   handleSubmit,
-  ignoreNewUserMessage
+  ignoreNewUserMessage,
+  customCloseButton,
 }: Props) {
   return (
     <Provider store={store}>
@@ -78,6 +80,7 @@ function ConnectedWidget({
         zoomStep={zoomStep}
         handleSubmit={handleSubmit}
         ignoreNewUserMessage={ignoreNewUserMessage}
+        customCloseButton={customCloseButton}
       />
     </Provider>
   );
