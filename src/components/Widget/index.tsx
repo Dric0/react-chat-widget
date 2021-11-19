@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 
 import { toggleChat, addUserMessage } from '../../store/actions';
 import { AnyFunction } from '../../utils/types';
-import { isWidgetOpened } from '../../store/dispatcher';
 
 import WidgetLayout from './layout';
 
@@ -57,14 +56,6 @@ function Widget({
   customCloseButton,
 }: Props) {
   const dispatch = useDispatch();
-
-  React.useEffect(() => (() => {
-    console.log('Unmounting widget.');
-    console.log('isWidgetOpened()', isWidgetOpened());
-    if (isWidgetOpened()) {
-      dispatch(toggleChat());
-    }
-  }));
 
   const toggleConversation = () => {
     dispatch(toggleChat());

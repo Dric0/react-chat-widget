@@ -9,6 +9,12 @@ export function toggleChat(): actionsTypes.ToggleChat {
   };
 }
 
+export function resetBehaviorReducer(): actionsTypes.ResetBehaviorReducer {
+  return {
+    type: actionsTypes.RESET_BEHAVIOR_REDUCER
+  };
+}
+
 export function toggleInputDisabled(): actionsTypes.ToggleInputDisabled {
   return {
     type: actionsTypes.TOGGLE_INPUT_DISABLED

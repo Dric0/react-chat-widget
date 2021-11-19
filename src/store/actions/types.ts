@@ -3,6 +3,7 @@ import { ElementType } from 'react';
 import { LinkParams, FullscreenPreviewState } from '../types';
 
 export const TOGGLE_CHAT = 'BEHAVIOR/TOGGLE_CHAT';
+export const RESET_BEHAVIOR_REDUCER = 'BEHAVIOR/RESET_BEHAVIOR_REDUCER';
 export const TOGGLE_INPUT_DISABLED = 'BEHAVIOR/TOGGLE_INPUT_DISABLED';
 export const TOGGLE_MESSAGE_LOADER = 'BEHAVIOR/TOGGLE_MSG_LOADER';
 export const SET_BADGE_COUNT = 'BEHAVIOR/SET_BADGE_COUNT';
@@ -20,6 +21,10 @@ export const CLOSE_FULLSCREEN_PREVIEW = 'FULLSCREEN/CLOSE_PREVIEW';
 
 export interface ToggleChat {
   type: typeof TOGGLE_CHAT;
+}
+
+export interface ResetBehaviorReducer {
+  type: typeof RESET_BEHAVIOR_REDUCER;
 }
 
 export interface ToggleInputDisabled {
@@ -85,7 +90,7 @@ export interface MarkAllMessagesRead {
   type: typeof MARK_ALL_READ;
 }
 
-export type BehaviorActions = ToggleChat | ToggleInputDisabled | ToggleMsgLoader;
+export type BehaviorActions = ToggleChat | ToggleInputDisabled | ToggleMsgLoader | ResetBehaviorReducer;
 
 export type MessagesActions = AddUserMessage | AddResponseMessage | AddLinkSnippet | RenderCustomComponent
                               | DropMessages | HideAvatar | DeleteMessages | MarkAllMessagesRead | SetBadgeCount;
