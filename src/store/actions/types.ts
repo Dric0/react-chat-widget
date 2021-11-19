@@ -23,7 +23,7 @@ export interface ToggleChat {
   type: typeof TOGGLE_CHAT;
 }
 
-export interface ResetBehaviorReducer {
+export interface ResetBehavior {
   type: typeof RESET_BEHAVIOR_REDUCER;
 }
 
@@ -90,7 +90,7 @@ export interface MarkAllMessagesRead {
   type: typeof MARK_ALL_READ;
 }
 
-export type BehaviorActions = ToggleChat | ToggleInputDisabled | ToggleMsgLoader | ResetBehaviorReducer;
+export type BehaviorActions = ToggleChat | ToggleInputDisabled | ToggleMsgLoader | ResetBehavior;
 
 export type MessagesActions = AddUserMessage | AddResponseMessage | AddLinkSnippet | RenderCustomComponent
                               | DropMessages | HideAvatar | DeleteMessages | MarkAllMessagesRead | SetBadgeCount;

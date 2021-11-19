@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader, addLinkSnippet, isWidgetOpened, resetBehaviorReducer } from '../index';
+import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader, addLinkSnippet, isWidgetOpened, resetBehavior } from '../index';
 import { addUserMessage } from '..';
 
 export default class App extends Component {
@@ -14,7 +14,7 @@ export default class App extends Component {
     }, 5000);
     setTimeout(() => {
       this.setState({ unmount: false });
-      resetBehaviorReducer();
+      resetBehavior();
     }, 10000);
   }
 
