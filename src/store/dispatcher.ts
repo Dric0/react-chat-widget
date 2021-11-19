@@ -20,6 +20,10 @@ export function toggleMsgLoader() {
   store.dispatch(actions.toggleMsgLoader());
 }
 
+export function resetBehaviorReducer() {
+  store.dispatch(actions.resetBehaviorReducer());
+}
+
 export function renderCustomComponent(component: ElementType, props: any, showAvatar = false, id?: string) {
   store.dispatch(actions.renderCustomComponent(component, props, showAvatar, id));
 }
