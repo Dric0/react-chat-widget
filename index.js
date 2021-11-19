@@ -13,7 +13,7 @@ import {
   deleteMessages,
   markAllAsRead,
   setBadgeCount,
-  resetBehaviorReducer
+  resetBehavior
 } from './src/store/dispatcher';
 
 export {
@@ -31,5 +31,5 @@ export {
   deleteMessages,
   markAllAsRead,
   setBadgeCount,
-  resetBehaviorReducer
+  resetBehavior
 };
