@@ -59,6 +59,8 @@ function Widget({
   const dispatch = useDispatch();
 
   React.useEffect(() => (() => {
+    console.log('Unmounting widget.');
+    console.log('isWidgetOpened()', isWidgetOpened());
     if (isWidgetOpened()) {
       dispatch(toggleChat());
     }
