@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 
 import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader, addLinkSnippet, isWidgetOpened, resetBehaviorReducer } from '../index';
 import { addUserMessage } from '..';
