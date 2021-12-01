@@ -29,6 +29,7 @@ type Props = {
   handleSubmit?: AnyFunction;
   ignoreNewUserMessage?: boolean;
   customCloseButton?: AnyFunction;
+  onChatFocus?: AnyFunction;
 }
 
 function Widget({
@@ -54,6 +55,7 @@ function Widget({
   handleSubmit,
   ignoreNewUserMessage,
   customCloseButton,
+  onChatFocus,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -73,7 +75,6 @@ function Widget({
     if (!ignoreNewUserMessage) {
       dispatch(addUserMessage(userInput));
     }
-    console.log(userInput);
     handleNewUserMessage(userInput);
     event.target.message.value = '';
   }
@@ -106,6 +107,7 @@ function Widget({
       imagePreview={imagePreview}
       zoomStep={zoomStep}
       customCloseButton={customCloseButton}
+      onChatFocus={onChatFocus}
     />
   );
 }
