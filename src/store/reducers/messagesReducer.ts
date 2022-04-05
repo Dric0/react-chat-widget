@@ -26,12 +26,9 @@ const messagesReducer = {
   [ADD_NEW_USER_MESSAGE]: (state: MessagesState, { text, id }) =>
     ({ ...state, messages: [...state.messages, createNewMessage(text, MESSAGE_SENDER.CLIENT, id)] }),
 
-  // [ADD_OLDER_MESSAGES]: (state: MessagesState, { component, props, showAvatar, id }) =>
-  //   ({ ...state, messages: [createComponentMessage(component, props, showAvatar, id), ...state.messages] }),
+  [ADD_OLDER_MESSAGES]: (state: MessagesState, { component, props, showAvatar, id }) =>
+    ({ ...state, messages: [createComponentMessage(component, props, showAvatar, id), ...state.messages] }),
     
-  [ADD_OLDER_MESSAGES]: (state: MessagesState, { text, id }) =>
-    ({ ...state, messages: [createNewMessage(text, MESSAGE_SENDER.CLIENT, id), ...state.messages] }),
-
   [ADD_NEW_RESPONSE_MESSAGE]: (state: MessagesState, { text, id }) => 
     ({ ...state, messages: [...state.messages, createNewMessage(text, MESSAGE_SENDER.RESPONSE, id)], badgeCount: state.badgeCount + 1 }),
 

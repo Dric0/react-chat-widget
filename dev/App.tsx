@@ -1,7 +1,34 @@
 import React, { Component } from 'react';
 
-import { Widget, addResponseMessage, setQuickButtons, toggleMsgLoader, addLinkSnippet, isWidgetOpened, resetBehavior } from '../index';
+import {
+  Widget,
+  addResponseMessage,
+  setQuickButtons,
+  toggleMsgLoader,
+  addLinkSnippet,
+  isWidgetOpened,
+  resetBehavior,
+  renderCustomComponent,
+  addOlderMessages,
+} from '../index';
 import { addUserMessage } from '..';
+
+const CustomOwnMessage = (props) => {
+  const {
+    text,
+  } = props;
+
+  return (
+    <div className="rcw-client">
+      <div className="rcw-message-text">
+        <p>{text}</p>
+      </div>
+      <span className="rcw-timestamp">
+        16/09/1993
+      </span>
+    </div>
+  );
+};
 
 export default class App extends Component {
   componentDidMount() {
@@ -9,6 +36,18 @@ export default class App extends Component {
     addLinkSnippet({ link: 'https://google.com', title: 'Google' });
     addResponseMessage('![](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)');
     addResponseMessage('![vertical](https://d2sofvawe08yqg.cloudfront.net/reintroducing-react/hero2x?1556470143)');
+    addOlderMessages(
+      CustomOwnMessage,
+      {
+        text: '1',
+      },
+    );
+    addOlderMessages(
+      CustomOwnMessage,
+      {
+        text: '2',
+      },
+    );
   }
 
   handleNewUserMessage = (newMessage: any) => {
