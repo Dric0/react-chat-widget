@@ -30,6 +30,7 @@ type Props = {
   handleSubmit?: AnyFunction;
   ignoreNewUserMessage?: boolean;
   customCloseButton?: AnyFunction;
+  onChatFocus?: AnyFunction;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -55,6 +56,7 @@ function ConnectedWidget({
   handleSubmit,
   ignoreNewUserMessage,
   customCloseButton,
+  onChatFocus,
 }: Props) {
   return (
     <Provider store={store}>
@@ -81,6 +83,7 @@ function ConnectedWidget({
         handleSubmit={handleSubmit}
         ignoreNewUserMessage={ignoreNewUserMessage}
         customCloseButton={customCloseButton}
+        onChatFocus={onChatFocus}
       />
     </Provider>
   );

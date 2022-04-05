@@ -27,6 +27,7 @@ type Props = {
   sendButtonAlt: string;
   showTimeStamp: boolean;
   customCloseButton?: AnyFunction;
+  onChatFocus?: (event: any) => void;
 };
 
 function Conversation({
@@ -46,9 +47,15 @@ function Conversation({
   sendButtonAlt,
   showTimeStamp,
   customCloseButton,
+  onChatFocus,
 }: Props) {
   return (
-    <div className={cn('rcw-conversation-container', className)} aria-live="polite">
+    <div
+      className={cn('rcw-conversation-container', className)}
+      aria-live="polite"
+      role="presentation"
+      onClick={onChatFocus}
+    >
       <Header
         title={title}
         subtitle={subtitle}

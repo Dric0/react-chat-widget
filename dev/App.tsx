@@ -9,16 +9,7 @@ export default class App extends Component {
     addLinkSnippet({ link: 'https://google.com', title: 'Google' });
     addResponseMessage('![](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)');
     addResponseMessage('![vertical](https://d2sofvawe08yqg.cloudfront.net/reintroducing-react/hero2x?1556470143)');
-    setTimeout(() => {
-      this.setState({ unmount: true });
-    }, 5000);
-    setTimeout(() => {
-      this.setState({ unmount: false });
-      resetBehavior();
-    }, 10000);
   }
-
-  state = { unmount: false };
 
   handleNewUserMessage = (newMessage: any) => {
     toggleMsgLoader();
@@ -54,10 +45,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(isWidgetOpened());
-    if (this.state.unmount) {
-      return null;
-    }
     return (
       <div>
         <button style={{position: 'absolute', right: 40, bottom: 150}}>test</button>
