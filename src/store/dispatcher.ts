@@ -8,6 +8,10 @@ export function addUserMessage(text: string, id?: string) {
   store.dispatch(actions.addUserMessage(text, id));
 }
 
+export function addOlderMessages(component: ElementType, props: any, showAvatar = false, id?: string) {
+  store.dispatch(actions.addOlderMessages(component, props, showAvatar, id));
+}
+
 export function addResponseMessage(text: string, id?: string) {
   store.dispatch(actions.addResponseMessage(text, id));
 }

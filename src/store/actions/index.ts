@@ -29,6 +29,21 @@ export function addUserMessage(text: string, id?: string): actionsTypes.AddUserM
   };
 }
 
+export function addOlderMessages(
+  component: ElementType,
+  props: any,
+  showAvatar: boolean,
+  id?: string
+): actionsTypes.AddOlderMessages {
+  return {
+    type: actionsTypes.ADD_OLDER_MESSAGES,
+    component,
+    props,
+    showAvatar,
+    id
+  };
+}
+
 export function addResponseMessage(text: string, id?: string): actionsTypes.AddResponseMessage {
   return {
     type: actionsTypes.ADD_NEW_RESPONSE_MESSAGE,

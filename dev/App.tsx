@@ -57,11 +57,6 @@ export default class App extends Component {
           imagePreview
           handleSubmit={this.handleSubmit}
           customCloseButton={this.customCloseButton}
-          onChatScroll={(scrollHeight, scrollTop, clientHeight) => {
-            console.log('scrollHeight', scrollHeight);
-            console.log('scrollTop', scrollTop);
-            console.log('clientHeight', clientHeight);
-          }}
         />
       </div>
     );

@@ -14,9 +14,10 @@ type Props = {
   showTimeStamp: boolean,
   profileAvatar?: string;
   onChatScroll?: AnyFunction;
+  avoidScrollToBottom?: boolean;
 }
 
-function Messages({ profileAvatar, showTimeStamp, onChatScroll }: Props) {
+function Messages({ profileAvatar, showTimeStamp, onChatScroll, avoidScrollToBottom }: Props) {
   const dispatch = useDispatch();
   const { messages, typing, showChat, badgeCount } = useSelector((state: GlobalState) => ({
     messages: state.messages.messages,
@@ -28,7 +29,9 @@ function Messages({ profileAvatar, showTimeStamp, onChatScroll }: Props) {
   const messageRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     // @ts-ignore
-    scrollToBottom(messageRef.current);
+    if (!avoidScrollToBottom) {
+      scrollToBottom(messageRef.current);
+    }
     if (showChat && badgeCount) dispatch(markAllMessagesRead());
     else dispatch(setBadgeCount(messages.filter((message) => message.unread).length));
   }, [messages, badgeCount, showChat]);
@@ -58,6 +61,8 @@ function Messages({ profileAvatar, showTimeStamp, onChatScroll }: Props) {
       );
     }
   };
+
+  console.log(messages);
 
   return (
     <div id="messages" className="rcw-messages-container" ref={messageRef} onScroll={handleScroll}>
