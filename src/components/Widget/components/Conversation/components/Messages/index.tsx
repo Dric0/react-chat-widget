@@ -8,13 +8,15 @@ import { setBadgeCount, markAllMessagesRead } from '@actions';
 
 import Loader from './components/Loader';
 import './styles.scss';
+import { AnyFunction } from 'src/utils/types';
 
 type Props = {
   showTimeStamp: boolean,
   profileAvatar?: string;
+  onChatScroll?: AnyFunction;
 }
 
-function Messages({ profileAvatar, showTimeStamp }: Props) {
+function Messages({ profileAvatar, showTimeStamp, onChatScroll }: Props) {
   const dispatch = useDispatch();
   const { messages, typing, showChat, badgeCount } = useSelector((state: GlobalState) => ({
     messages: state.messages.messages,
@@ -47,8 +49,18 @@ function Messages({ profileAvatar, showTimeStamp }: Props) {
   //   }
   // }
 
+  const handleScroll = (e) => {
+    if (onChatScroll) {
+      onChatScroll(
+        e.target.scrollHeight,
+        e.target.scrollTop,
+        e.target.clientHeight,
+      );
+    }
+  };
+
   return (
-    <div id="messages" className="rcw-messages-container" ref={messageRef}>
+    <div id="messages" className="rcw-messages-container" ref={messageRef} onScroll={handleScroll}>
       {messages?.map((message, index) =>
         <div className="rcw-message" key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
           {profileAvatar &&

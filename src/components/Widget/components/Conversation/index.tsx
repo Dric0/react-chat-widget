@@ -28,6 +28,7 @@ type Props = {
   showTimeStamp: boolean;
   customCloseButton?: AnyFunction;
   onChatFocus?: (event: any) => void;
+  onChatScroll?: (event: any) => void;
 };
 
 function Conversation({
@@ -48,6 +49,7 @@ function Conversation({
   showTimeStamp,
   customCloseButton,
   onChatFocus,
+  onChatScroll,
 }: Props) {
   return (
     <div
@@ -64,7 +66,11 @@ function Conversation({
         titleAvatar={titleAvatar}
         customCloseButton={customCloseButton}
       />
-      <Messages profileAvatar={profileAvatar} showTimeStamp={showTimeStamp} />
+      <Messages
+        profileAvatar={profileAvatar}
+        showTimeStamp={showTimeStamp}
+        onChatScroll={onChatScroll}
+      />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
       <Sender
         sendMessage={sendMessage}

@@ -35,6 +35,7 @@ type Props = {
   zoomStep?: number;
   customCloseButton?: AnyFunction;
   onChatFocus?: AnyFunction;
+  onChatScroll?: AnyFunction;
 }
 
 function WidgetLayout({
@@ -60,6 +61,7 @@ function WidgetLayout({
   zoomStep,
   customCloseButton,
   onChatFocus,
+  onChatScroll,
 }: Props) {
   const dispatch = useDispatch();
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
@@ -139,6 +141,7 @@ function WidgetLayout({
           showTimeStamp={showTimeStamp}
           customCloseButton={customCloseButton}
           onChatFocus={onChatFocus}
+          onChatScroll={onChatScroll}
         />
       }
       {customLauncher ?
