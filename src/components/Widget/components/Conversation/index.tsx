@@ -29,6 +29,7 @@ type Props = {
   customCloseButton?: AnyFunction;
   onChatFocus?: (event: any) => void;
   onChatScroll?: (event: any) => void;
+  avoidScrollToBottom?: boolean;
 };
 
 function Conversation({
@@ -50,6 +51,7 @@ function Conversation({
   customCloseButton,
   onChatFocus,
   onChatScroll,
+  avoidScrollToBottom,
 }: Props) {
   return (
     <div
@@ -70,6 +72,7 @@ function Conversation({
         profileAvatar={profileAvatar}
         showTimeStamp={showTimeStamp}
         onChatScroll={onChatScroll}
+        avoidScrollToBottom={avoidScrollToBottom}
       />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
       <Sender

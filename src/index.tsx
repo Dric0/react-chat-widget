@@ -32,6 +32,7 @@ type Props = {
   customCloseButton?: AnyFunction;
   onChatFocus?: AnyFunction;
   onChatScroll?: AnyFunction;
+  avoidScrollToBottom?: boolean;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -59,6 +60,7 @@ function ConnectedWidget({
   customCloseButton,
   onChatFocus,
   onChatScroll,
+  avoidScrollToBottom,
 }: Props) {
   return (
     <Provider store={store}>
@@ -87,6 +89,7 @@ function ConnectedWidget({
         customCloseButton={customCloseButton}
         onChatFocus={onChatFocus}
         onChatScroll={onChatScroll}
+        avoidScrollToBottom={avoidScrollToBottom}
       />
     </Provider>
   );
