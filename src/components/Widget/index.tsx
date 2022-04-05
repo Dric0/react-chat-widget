@@ -31,6 +31,7 @@ type Props = {
   customCloseButton?: AnyFunction;
   onChatFocus?: AnyFunction;
   onChatScroll?: AnyFunction;
+  avoidScrollToBottom?: boolean;
 }
 
 function Widget({
@@ -58,6 +59,7 @@ function Widget({
   customCloseButton,
   onChatFocus,
   onChatScroll,
+  avoidScrollToBottom,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -111,6 +113,7 @@ function Widget({
       customCloseButton={customCloseButton}
       onChatFocus={onChatFocus}
       onChatScroll={onChatScroll}
+      avoidScrollToBottom={avoidScrollToBottom}
     />
   );
 }

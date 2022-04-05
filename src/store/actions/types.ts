@@ -8,6 +8,7 @@ export const TOGGLE_INPUT_DISABLED = 'BEHAVIOR/TOGGLE_INPUT_DISABLED';
 export const TOGGLE_MESSAGE_LOADER = 'BEHAVIOR/TOGGLE_MSG_LOADER';
 export const SET_BADGE_COUNT = 'BEHAVIOR/SET_BADGE_COUNT';
 export const ADD_NEW_USER_MESSAGE = 'MESSAGES/ADD_NEW_USER_MESSAGE';
+export const ADD_OLDER_MESSAGES = 'ADD_OLDER_MESSAGES';
 export const ADD_NEW_RESPONSE_MESSAGE = 'MESSAGES/ADD_NEW_RESPONSE_MESSAGE';
 export const ADD_NEW_LINK_SNIPPET = 'MESSAGES/ADD_NEW_LINK_SNIPPET';
 export const ADD_COMPONENT_MESSAGE = 'MESSAGES/ADD_COMPONENT_MESSAGE';
@@ -34,6 +35,14 @@ export interface ToggleInputDisabled {
 export interface AddUserMessage {
   type: typeof ADD_NEW_USER_MESSAGE;
   text: string;
+  id?: string;
+}
+
+export interface AddOlderMessages {
+  type: typeof ADD_OLDER_MESSAGES;
+  component: ElementType;
+  props: any;
+  showAvatar: boolean;
   id?: string;
 }
 
@@ -92,7 +101,7 @@ export interface MarkAllMessagesRead {
 
 export type BehaviorActions = ToggleChat | ToggleInputDisabled | ToggleMsgLoader | ResetBehavior;
 
-export type MessagesActions = AddUserMessage | AddResponseMessage | AddLinkSnippet | RenderCustomComponent
+export type MessagesActions = AddUserMessage | AddOlderMessages | AddResponseMessage | AddLinkSnippet | RenderCustomComponent
                               | DropMessages | HideAvatar | DeleteMessages | MarkAllMessagesRead | SetBadgeCount;
 
 export type QuickButtonsActions = SetQuickButtons;

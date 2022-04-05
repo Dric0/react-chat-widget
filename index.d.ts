@@ -9,6 +9,8 @@ declare const Widget: ElementType;
 export function addUserMessage(text: string): void;
 export function addUserMessage(text: string, id: string): void;
 
+export function addOlderMessages(component: ElementType, props: any, showAvatar: boolean, id: string): void;
+
 export function addResponseMessage(text: string): void;
 export function addResponseMessage(text: string, id: string): void;
 

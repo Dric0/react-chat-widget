@@ -36,6 +36,7 @@ type Props = {
   customCloseButton?: AnyFunction;
   onChatFocus?: AnyFunction;
   onChatScroll?: AnyFunction;
+  avoidScrollToBottom?: boolean;
 }
 
 function WidgetLayout({
@@ -62,6 +63,7 @@ function WidgetLayout({
   customCloseButton,
   onChatFocus,
   onChatScroll,
+  avoidScrollToBottom,
 }: Props) {
   const dispatch = useDispatch();
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
@@ -142,6 +144,7 @@ function WidgetLayout({
           customCloseButton={customCloseButton}
           onChatFocus={onChatFocus}
           onChatScroll={onChatScroll}
+          avoidScrollToBottom={avoidScrollToBottom}
         />
       }
       {customLauncher ?
