@@ -31,6 +31,7 @@ type Props = {
   ignoreNewUserMessage?: boolean;
   customCloseButton?: AnyFunction;
   onChatFocus?: AnyFunction;
+  onChatScroll?: AnyFunction;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -57,6 +58,7 @@ function ConnectedWidget({
   ignoreNewUserMessage,
   customCloseButton,
   onChatFocus,
+  onChatScroll,
 }: Props) {
   return (
     <Provider store={store}>
@@ -84,6 +86,7 @@ function ConnectedWidget({
         ignoreNewUserMessage={ignoreNewUserMessage}
         customCloseButton={customCloseButton}
         onChatFocus={onChatFocus}
+        onChatScroll={onChatScroll}
       />
     </Provider>
   );

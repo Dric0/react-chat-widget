@@ -30,6 +30,7 @@ type Props = {
   ignoreNewUserMessage?: boolean;
   customCloseButton?: AnyFunction;
   onChatFocus?: AnyFunction;
+  onChatScroll?: AnyFunction;
 }
 
 function Widget({
@@ -56,6 +57,7 @@ function Widget({
   ignoreNewUserMessage,
   customCloseButton,
   onChatFocus,
+  onChatScroll,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -108,6 +110,7 @@ function Widget({
       zoomStep={zoomStep}
       customCloseButton={customCloseButton}
       onChatFocus={onChatFocus}
+      onChatScroll={onChatScroll}
     />
   );
 }
