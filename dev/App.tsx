@@ -56,6 +56,21 @@ export default class App extends Component {
     this.setState({
       dataSource: this.getDataSource(),
     });
+    // setTimeout(() => {
+    //   this.setState({
+    //     dataSource: [...this.getDataSource(), {
+    //       component: CustomOwnMessage,
+    //       props: {
+    //         text: '3',
+    //         id: '3',
+    //         timestamp: '2022-04-05T19:01:05-03:00',
+    //       },
+    //       type: 'component',
+    //       timestamp: new Date(),
+    //       unread: true
+    //     },],
+    //   });
+    // }, 5000);
   }
 
   handleNewUserMessage = (newMessage: any) => {
@@ -92,22 +107,6 @@ export default class App extends Component {
   }
 
   getDataSource = () => {
-    // const arr = [
-    //   {
-    //     component: CustomOwnMessage({
-    //       text: '1',
-    //       id: '1',
-    //       timestamp: '2022-04-05T18:59:51-03:00',
-    //     }),
-    //   },
-    //   {
-    //     component: CustomOwnMessage({
-    //       text: '2',
-    //       id: '2',
-    //       timestamp: '2022-04-05T19:01:05-03:00',
-    //     }),
-    //   },
-    // ];
     const arr = [
       {
         component: CustomOwnMessage,
@@ -131,26 +130,40 @@ export default class App extends Component {
         timestamp: new Date(),
         unread: true
       },
+      {
+        component: CustomOwnMessage,
+        props: {
+          text: '2',
+          id: '2',
+          timestamp: '2022-04-05T19:01:05-03:00',
+        },
+        type: 'component',
+        timestamp: new Date(),
+        unread: true
+      },
+      {
+        component: CustomOwnMessage,
+        props: {
+          text: '2',
+          id: '2',
+          timestamp: '2022-04-05T19:01:05-03:00',
+        },
+        type: 'component',
+        timestamp: new Date(),
+        unread: true
+      },
+      {
+        component: CustomOwnMessage,
+        props: {
+          text: '2',
+          id: '2',
+          timestamp: '2022-04-05T19:01:05-03:00',
+        },
+        type: 'component',
+        timestamp: new Date(),
+        unread: true
+      },
     ];
-    // const arr = [
-    //   renderCustomComponent(
-    //     CustomOwnMessage,
-    //     {
-    //       text: '1',
-    //       id: '1',
-    //       timestamp: '2022-04-05T18:59:51-03:00',
-    //     },
-    //   ),
-    //   renderCustomComponent(
-    //     CustomOwnMessage,
-    //     {
-    //       text: '2',
-    //       id: '2',
-    //       timestamp: '2022-04-05T19:01:05-03:00',
-    //     },
-    //   ),
-    // ];
-    console.log(arr);
     return arr;
   }
 
