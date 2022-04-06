@@ -32,6 +32,7 @@ type Props = {
   onChatFocus?: AnyFunction;
   onChatScroll?: AnyFunction;
   avoidScrollToBottom?: boolean;
+  dataSource?: Array<any>;
 }
 
 function Widget({
@@ -60,6 +61,7 @@ function Widget({
   onChatFocus,
   onChatScroll,
   avoidScrollToBottom,
+  dataSource,
 }: Props) {
   const dispatch = useDispatch();
 
@@ -114,6 +116,7 @@ function Widget({
       onChatFocus={onChatFocus}
       onChatScroll={onChatScroll}
       avoidScrollToBottom={avoidScrollToBottom}
+      dataSource={dataSource}
     />
   );
 }

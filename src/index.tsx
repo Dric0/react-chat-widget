@@ -33,6 +33,7 @@ type Props = {
   onChatFocus?: AnyFunction;
   onChatScroll?: AnyFunction;
   avoidScrollToBottom?: boolean;
+  dataSource?: Array<any>;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -61,6 +62,7 @@ function ConnectedWidget({
   onChatFocus,
   onChatScroll,
   avoidScrollToBottom,
+  dataSource,
 }: Props) {
   return (
     <Provider store={store}>
@@ -90,6 +92,7 @@ function ConnectedWidget({
         onChatFocus={onChatFocus}
         onChatScroll={onChatScroll}
         avoidScrollToBottom={avoidScrollToBottom}
+        dataSource={dataSource}
       />
     </Provider>
   );
