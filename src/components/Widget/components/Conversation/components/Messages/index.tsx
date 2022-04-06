@@ -72,6 +72,7 @@ function Messages({
   if (dataSource) {
     return (
       <div id="messages" className="rcw-messages-container" ref={messageRef} onScroll={handleScroll}>
+        <Loader typing={typing} />
         {dataSource.map((message, index) =>
           <div className="rcw-message" key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
             {profileAvatar &&
@@ -81,7 +82,6 @@ function Messages({
             {getComponentToRender(message)}
           </div>
         )}
-        <Loader typing={typing} />
       </div>
     );
   }
