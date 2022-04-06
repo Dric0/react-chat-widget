@@ -56,6 +56,7 @@ export default class App extends Component {
     this.setState({
       dataSource: this.getDataSource(),
     });
+    // toggleMsgLoader();
     // setTimeout(() => {
     //   this.setState({
     //     dataSource: [...this.getDataSource(), {
@@ -70,6 +71,7 @@ export default class App extends Component {
     //       unread: true
     //     },],
     //   });
+    //   toggleMsgLoader();
     // }, 5000);
   }
 
