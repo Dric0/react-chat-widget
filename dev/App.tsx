@@ -16,6 +16,7 @@ import { addUserMessage } from '..';
 const CustomOwnMessage = (props) => {
   const {
     text,
+    timestamp,
   } = props;
 
   return (
@@ -24,13 +25,17 @@ const CustomOwnMessage = (props) => {
         <p>{text}</p>
       </div>
       <span className="rcw-timestamp">
-        16/09/1993
+        {timestamp}
       </span>
     </div>
   );
 };
 
 export default class App extends Component {
+  state = {
+    dataSource: [],
+  }
+
   componentDidMount() {
     addResponseMessage('Welcome to this awesome chat!');
     addLinkSnippet({ link: 'https://google.com', title: 'Google' });
@@ -48,6 +53,9 @@ export default class App extends Component {
         text: '2',
       },
     );
+    this.setState({
+      dataSource: this.getDataSource(),
+    });
   }
 
   handleNewUserMessage = (newMessage: any) => {
@@ -83,6 +91,69 @@ export default class App extends Component {
     );
   }
 
+  getDataSource = () => {
+    // const arr = [
+    //   {
+    //     component: CustomOwnMessage({
+    //       text: '1',
+    //       id: '1',
+    //       timestamp: '2022-04-05T18:59:51-03:00',
+    //     }),
+    //   },
+    //   {
+    //     component: CustomOwnMessage({
+    //       text: '2',
+    //       id: '2',
+    //       timestamp: '2022-04-05T19:01:05-03:00',
+    //     }),
+    //   },
+    // ];
+    const arr = [
+      {
+        component: CustomOwnMessage,
+        props: {
+          text: '1',
+          id: '1',
+          timestamp: '2022-04-05T18:59:51-03:00',
+        },
+        type: 'component',
+        timestamp: new Date(),
+        unread: true
+      },
+      {
+        component: CustomOwnMessage,
+        props: {
+          text: '2',
+          id: '2',
+          timestamp: '2022-04-05T19:01:05-03:00',
+        },
+        type: 'component',
+        timestamp: new Date(),
+        unread: true
+      },
+    ];
+    // const arr = [
+    //   renderCustomComponent(
+    //     CustomOwnMessage,
+    //     {
+    //       text: '1',
+    //       id: '1',
+    //       timestamp: '2022-04-05T18:59:51-03:00',
+    //     },
+    //   ),
+    //   renderCustomComponent(
+    //     CustomOwnMessage,
+    //     {
+    //       text: '2',
+    //       id: '2',
+    //       timestamp: '2022-04-05T19:01:05-03:00',
+    //     },
+    //   ),
+    // ];
+    console.log(arr);
+    return arr;
+  }
+
   render() {
     return (
       <div>
@@ -96,6 +167,7 @@ export default class App extends Component {
           imagePreview
           handleSubmit={this.handleSubmit}
           customCloseButton={this.customCloseButton}
+          dataSource={this.state.dataSource}
         />
       </div>
     );

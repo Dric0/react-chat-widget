@@ -15,9 +15,16 @@ type Props = {
   profileAvatar?: string;
   onChatScroll?: AnyFunction;
   avoidScrollToBottom?: boolean;
+  dataSource?: Array<any>;
 }
 
-function Messages({ profileAvatar, showTimeStamp, onChatScroll, avoidScrollToBottom }: Props) {
+function Messages({
+  profileAvatar,
+  showTimeStamp,
+  onChatScroll,
+  avoidScrollToBottom,
+  dataSource,
+}: Props) {
   const dispatch = useDispatch();
   const { messages, typing, showChat, badgeCount } = useSelector((state: GlobalState) => ({
     messages: state.messages.messages,
@@ -62,7 +69,22 @@ function Messages({ profileAvatar, showTimeStamp, onChatScroll, avoidScrollToBot
     }
   };
 
-  console.log(messages);
+  if (dataSource) {
+    return (
+      <div id="messages" className="rcw-messages-container" ref={messageRef} onScroll={handleScroll}>
+        {dataSource.map((message, index) =>
+          <div className="rcw-message" key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
+            {profileAvatar &&
+              message.showAvatar &&
+              <img src={profileAvatar} className="rcw-avatar" alt="profile" />
+            }
+            {getComponentToRender(message)}
+          </div>
+        )}
+        <Loader typing={typing} />
+      </div>
+    );
+  }
 
   return (
     <div id="messages" className="rcw-messages-container" ref={messageRef} onScroll={handleScroll}>
