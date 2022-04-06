@@ -30,6 +30,7 @@ type Props = {
   onChatFocus?: (event: any) => void;
   onChatScroll?: (event: any) => void;
   avoidScrollToBottom?: boolean;
+  dataSource?: Array<any>;
 };
 
 function Conversation({
@@ -52,6 +53,7 @@ function Conversation({
   onChatFocus,
   onChatScroll,
   avoidScrollToBottom,
+  dataSource,
 }: Props) {
   return (
     <div
@@ -73,6 +75,7 @@ function Conversation({
         showTimeStamp={showTimeStamp}
         onChatScroll={onChatScroll}
         avoidScrollToBottom={avoidScrollToBottom}
+        dataSource={dataSource}
       />
       <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
       <Sender
