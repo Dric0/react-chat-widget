@@ -62,8 +62,6 @@ function Messages({ profileAvatar, showTimeStamp, onChatScroll, avoidScrollToBot
     }
   };
 
-  console.log(messages);
-
   return (
     <div id="messages" className="rcw-messages-container" ref={messageRef} onScroll={handleScroll}>
       {messages?.map((message, index) =>
