@@ -10,6 +10,7 @@ const close = require('../../../../../../../assets/clear-button.svg') as string;
 import './style.scss';
 
 type Props = {
+  chatId: string;
   title: string;
   subtitle: string;
   toggle: () => void;
@@ -18,14 +19,14 @@ type Props = {
   customCloseButton?: AnyFunction;
 }
 
-function Header({ title, subtitle, toggle, showCloseButton, titleAvatar, customCloseButton }: Props) {
+function Header({ chatId, title, subtitle, toggle, showCloseButton, titleAvatar, customCloseButton }: Props) {
   const dispatch = useDispatch();
   const { showChat } = useSelector((state: GlobalState) => ({
-    showChat: state.behavior.showChat
+    showChat: state.behavior?.[chatId]?.showChat || false,
   }));
   const toggleChat = () => {
     toggle();
-    if (!showChat) dispatch(setBadgeCount(0));
+    if (!showChat) dispatch(setBadgeCount(chatId, 0));
   }
 
   const renderCloseButton = () => {

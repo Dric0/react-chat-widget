@@ -29,8 +29,10 @@ type Props = {
   customCloseButton?: AnyFunction;
   onChatFocus?: (event: any) => void;
   onChatScroll?: (event: any) => void;
+  chatId: string;
   avoidScrollToBottom?: boolean;
   dataSource?: Array<any>;
+  inlineMode?: boolean;
 };
 
 function Conversation({
@@ -52,8 +54,10 @@ function Conversation({
   customCloseButton,
   onChatFocus,
   onChatScroll,
+  chatId,
   avoidScrollToBottom,
   dataSource,
+  inlineMode,
 }: Props) {
   return (
     <div
@@ -63,6 +67,7 @@ function Conversation({
       onClick={onChatFocus}
     >
       <Header
+        chatId={chatId}
         title={title}
         subtitle={subtitle}
         toggle={toggleChat}
@@ -74,11 +79,14 @@ function Conversation({
         profileAvatar={profileAvatar}
         showTimeStamp={showTimeStamp}
         onChatScroll={onChatScroll}
+        chatId={chatId}
         avoidScrollToBottom={avoidScrollToBottom}
         dataSource={dataSource}
+        inlineMode={inlineMode}
       />
-      <QuickButtons onQuickButtonClicked={onQuickButtonClicked} />
+      <QuickButtons chatId={chatId} onQuickButtonClicked={onQuickButtonClicked} />
       <Sender
+        chatId={chatId}
         sendMessage={sendMessage}
         placeholder={senderPlaceHolder}
         disabledInput={disabledInput}

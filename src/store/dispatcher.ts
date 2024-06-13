@@ -4,64 +4,64 @@ import store from '.';
 import * as actions from './actions';
 import { LinkParams, ImageState } from './types';
 
-export function addUserMessage(text: string, id?: string) {
-  store.dispatch(actions.addUserMessage(text, id));
+export function addUserMessage(chatId: string, text: string, id?: string) {
+  store.dispatch(actions.addUserMessage(chatId, text, id));
 }
 
-export function addOlderMessages(component: ElementType, props: any, showAvatar = false, id?: string) {
-  store.dispatch(actions.addOlderMessages(component, props, showAvatar, id));
+export function addOlderMessages(chatId: string, component: ElementType, props: any, showAvatar = false, id?: string) {
+  store.dispatch(actions.addOlderMessages(chatId, component, props, showAvatar, id));
 }
 
-export function addResponseMessage(text: string, id?: string) {
-  store.dispatch(actions.addResponseMessage(text, id));
+export function addResponseMessage(chatId: string, text: string, id?: string) {
+  store.dispatch(actions.addResponseMessage(chatId, text, id));
 }
 
-export function addLinkSnippet(link: LinkParams, id?: string) {
-  store.dispatch(actions.addLinkSnippet(link, id));
+export function addLinkSnippet(chatId: string, link: LinkParams, id?: string) {
+  store.dispatch(actions.addLinkSnippet(chatId, link, id));
 }
 
-export function toggleMsgLoader() {
-  store.dispatch(actions.toggleMsgLoader());
+export function toggleMsgLoader(chatId: string) {
+  store.dispatch(actions.toggleMsgLoader(chatId));
 }
 
-export function resetBehavior() {
-  store.dispatch(actions.resetBehavior());
+export function resetBehavior(chatId: string) {
+  store.dispatch(actions.resetBehavior(chatId));
 }
 
-export function renderCustomComponent(component: ElementType, props: any, showAvatar = false, id?: string) {
-  store.dispatch(actions.renderCustomComponent(component, props, showAvatar, id));
+export function renderCustomComponent(chatId: string, component: ElementType, props: any, showAvatar = false, id?: string) {
+  store.dispatch(actions.renderCustomComponent(chatId, component, props, showAvatar, id));
 }
 
-export function toggleWidget() {
-  store.dispatch(actions.toggleChat());
+export function toggleWidget(chatId: string) {
+  store.dispatch(actions.toggleChat(chatId));
 }
 
-export function toggleInputDisabled() {
-  store.dispatch(actions.toggleInputDisabled());
+export function toggleInputDisabled(chatId: string) {
+  store.dispatch(actions.toggleInputDisabled(chatId));
 }
 
-export function dropMessages() {
-  store.dispatch(actions.dropMessages());
+export function dropMessages(chatId: string) {
+  store.dispatch(actions.dropMessages(chatId));
 }
 
-export function isWidgetOpened(): boolean {
-  return store.getState().behavior.showChat;
+export function isWidgetOpened(chatId: string): boolean {
+  return store.getState().behavior[chatId].showChat;
 }
 
-export function setQuickButtons(buttons: Array<{ label: string, value: string | number }>) {
-  store.dispatch(actions.setQuickButtons(buttons));
+export function setQuickButtons(chatId: string, buttons: Array<{ label: string, value: string | number }>) {
+  store.dispatch(actions.setQuickButtons(chatId, buttons));
 }
 
-export function deleteMessages(count: number, id?: string) {
-  store.dispatch(actions.deleteMessages(count, id));
+export function deleteMessages(chatId: string, count: number, id?: string) {
+  store.dispatch(actions.deleteMessages(chatId, count, id));
 }
 
-export function markAllAsRead() {
-  store.dispatch(actions.markAllMessagesRead());
+export function markAllAsRead(chatId: string) {
+  store.dispatch(actions.markAllMessagesRead(chatId));
 }
 
-export function setBadgeCount(count: number) {
-  store.dispatch(actions.setBadgeCount(count));
+export function setBadgeCount(chatId: string, count: number) {
+  store.dispatch(actions.setBadgeCount(chatId, count));
 }
 
 export function openFullscreenPreview(payload: ImageState) {

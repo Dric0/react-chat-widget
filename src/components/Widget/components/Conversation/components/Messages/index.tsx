@@ -14,24 +14,33 @@ type Props = {
   showTimeStamp: boolean,
   profileAvatar?: string;
   onChatScroll?: AnyFunction;
+  chatId: string;
   avoidScrollToBottom?: boolean;
   dataSource?: Array<any>;
+  inlineMode?: boolean;
 }
 
 function Messages({
   profileAvatar,
   showTimeStamp,
   onChatScroll,
+  chatId,
   avoidScrollToBottom,
   dataSource,
+  inlineMode,
 }: Props) {
   const dispatch = useDispatch();
   const { messages, typing, showChat, badgeCount } = useSelector((state: GlobalState) => ({
-    messages: state.messages.messages,
-    badgeCount: state.messages.badgeCount,
-    typing: state.behavior.messageLoader,
-    showChat: state.behavior.showChat
+    messages: state.messages?.[chatId]?.messages || [],
+    badgeCount: state.messages?.[chatId]?.badgeCount || 0,
+    typing: state.behavior?.[chatId]?.messageLoader || false,
+    showChat: state.behavior?.[chatId]?.showChat || false
   }));
+
+  console.log('messages', messages, chatId);
+  console.log('inlineMode', inlineMode, chatId);
+  console.log('showChat', showChat, chatId);
+  console.log('badgeCount', badgeCount, chatId);
 
   const messageRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
@@ -39,9 +48,11 @@ function Messages({
     if (!avoidScrollToBottom) {
       scrollToBottom(messageRef.current);
     }
-    if (showChat && badgeCount) dispatch(markAllMessagesRead());
-    else dispatch(setBadgeCount(messages.filter((message) => message.unread).length));
-  }, [dataSource, messages, badgeCount, showChat]);
+    if (!inlineMode) {
+      if (showChat && badgeCount) dispatch(markAllMessagesRead(chatId));
+      else dispatch(setBadgeCount(chatId, messages.filter((message) => message.unread).length));
+    }
+  }, [dataSource, messages, badgeCount, showChat, inlineMode]);
     
   const getComponentToRender = (message: Message | Link | CustomCompMessage) => {
     const ComponentToRender = message.component;

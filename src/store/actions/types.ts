@@ -22,24 +22,29 @@ export const CLOSE_FULLSCREEN_PREVIEW = 'FULLSCREEN/CLOSE_PREVIEW';
 
 export interface ToggleChat {
   type: typeof TOGGLE_CHAT;
+  chatId: string;
 }
 
 export interface ResetBehavior {
   type: typeof RESET_BEHAVIOR_REDUCER;
+  chatId: string;
 }
 
 export interface ToggleInputDisabled {
   type: typeof TOGGLE_INPUT_DISABLED;
+  chatId: string;
 }
 
 export interface AddUserMessage {
   type: typeof ADD_NEW_USER_MESSAGE;
+  chatId: string;
   text: string;
   id?: string;
 }
 
 export interface AddOlderMessages {
   type: typeof ADD_OLDER_MESSAGES;
+  chatId: string;
   component: ElementType;
   props: any;
   showAvatar: boolean;
@@ -48,22 +53,26 @@ export interface AddOlderMessages {
 
 export interface AddResponseMessage {
   type: typeof ADD_NEW_RESPONSE_MESSAGE;
+  chatId: string;
   text: string;
   id?: string;
 }
 
 export interface ToggleMsgLoader {
   type: typeof TOGGLE_MESSAGE_LOADER;
+  chatId: string;
 }
 
 export interface AddLinkSnippet {
   type: typeof ADD_NEW_LINK_SNIPPET;
+  chatId: string;
   link: LinkParams;
   id?: string;
 }
 
 export interface RenderCustomComponent {
   type: typeof ADD_COMPONENT_MESSAGE;
+  chatId: string;
   component: ElementType;
   props: any;
   showAvatar: boolean;
@@ -72,31 +81,37 @@ export interface RenderCustomComponent {
 
 export interface DropMessages {
   type: typeof DROP_MESSAGES;
+  chatId: string;
 }
 
 export interface HideAvatar {
   type: typeof HIDE_AVATAR;
+  chatId: string;
   index: number;
 }
 
 export interface DeleteMessages {
   type: typeof DELETE_MESSAGES;
+  chatId: string;
   count: number;
   id?: string;
 }
 
 export interface SetQuickButtons {
   type: typeof SET_QUICK_BUTTONS;
+  chatId: string;
   buttons: Array<{ label: string, value: string | number }>;
 }
 
 export interface SetBadgeCount {
   type: typeof SET_BADGE_COUNT;
+  chatId: string;
   count: number;
 }
 
 export interface MarkAllMessagesRead {
   type: typeof MARK_ALL_READ;
+  chatId: string;
 }
 
 export type BehaviorActions = ToggleChat | ToggleInputDisabled | ToggleMsgLoader | ResetBehavior;
