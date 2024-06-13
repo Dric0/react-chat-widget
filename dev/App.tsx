@@ -10,6 +10,7 @@ import {
   resetBehavior,
   renderCustomComponent,
   addOlderMessages,
+  deleteMessages,
 } from '../index';
 import { addUserMessage } from '..';
 
@@ -58,6 +59,9 @@ export default class App extends Component {
     this.setState({
       dataSource: this.getDataSource(),
     });
+    setTimeout(() => {
+      deleteMessages('inline', 0);
+    }, 5000);
     // toggleMsgLoader();
     // setTimeout(() => {
     //   this.setState({
@@ -188,7 +192,7 @@ export default class App extends Component {
           // dataSource={this.state.dataSource}
         />
         <Widget
-          // chatId="inline"
+          chatId="inline"
           title="Bienvenido 2"
           subtitle="Asistente virtual"
           senderPlaceHolder="Escribe aquí ..."
