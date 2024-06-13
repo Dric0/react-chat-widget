@@ -37,11 +37,6 @@ function Messages({
     showChat: state.behavior?.[chatId]?.showChat || false
   }));
 
-  console.log('messages', messages, chatId);
-  console.log('inlineMode', inlineMode, chatId);
-  console.log('showChat', showChat, chatId);
-  console.log('badgeCount', badgeCount, chatId);
-
   const messageRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     // @ts-ignore

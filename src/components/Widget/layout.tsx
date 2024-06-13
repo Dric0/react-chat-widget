@@ -76,10 +76,6 @@ function WidgetLayout({
     visible: state.preview.visible,
   }));
 
-  useSelector((state: GlobalState) => {
-    console.log(state);
-  });
-
   const messageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -121,17 +117,6 @@ function WidgetLayout({
   useEffect(() => {
     document.body.setAttribute('style', `overflow: ${visible || fullScreenMode ? 'hidden' : 'auto'}`)
   }, [fullScreenMode, visible])
-
-  // console.log('inlineMode', inlineMode);
-  console.log('showChat', inlineMode ? 'segundo comp' : 'primeiro comp', showChat);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (inlineMode) {
-        onToggleConversation();
-      }
-    }, 5000);
-  }, []);
 
   return (
     <div

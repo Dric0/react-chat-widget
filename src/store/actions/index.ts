@@ -4,7 +4,6 @@ import * as actionsTypes from './types';
 import { LinkParams, ImageState } from '../types';
 
 export function toggleChat(chatId: string): actionsTypes.ToggleChat {
-  console.log('DENTRO DA ACTION', chatId);
   return {
     type: actionsTypes.TOGGLE_CHAT,
     chatId
