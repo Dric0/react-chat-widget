@@ -9,20 +9,16 @@ import {
   RESET_BEHAVIOR_REDUCER,
 } from '../actions/types';
 
-const initialState = {
-  showChat: false,
-  disabledInput: false,
-  messageLoader: false
-};
+const initialState = {};
 
 const behaviorReducer = {
-  [TOGGLE_CHAT]: (state: BehaviorState) => ({ ...state, showChat: !state.showChat}),
+  [TOGGLE_CHAT]: (state: BehaviorState, { chatId }) => ({ ...state, [chatId]: { ...state[chatId], showChat: !state?.[chatId]?.showChat }}),
 
-  [TOGGLE_INPUT_DISABLED]: (state: BehaviorState) => ({ ...state, disabledInput: !state.disabledInput }),
+  [TOGGLE_INPUT_DISABLED]: (state: BehaviorState, { chatId }) => ({ ...state, [chatId]: { ...state[chatId], disabledInput: !state?.[chatId]?.disabledInput }}),
 
-  [TOGGLE_MESSAGE_LOADER]: (state: BehaviorState) => ({ ...state, messageLoader: !state.messageLoader }),
+  [TOGGLE_MESSAGE_LOADER]: (state: BehaviorState, { chatId }) => ({ ...state, [chatId]: { ...state[chatId], messageLoader: !state?.[chatId]?.messageLoader }}),
 
-  [RESET_BEHAVIOR_REDUCER]: (state: BehaviorState) => ({ ...initialState })
+  [RESET_BEHAVIOR_REDUCER]: (state: BehaviorState, { chatId }) => ({ ...state, [chatId]: { ...initialState } })
 };
 
 export default (state: BehaviorState = initialState, action: BehaviorActions) => createReducer(behaviorReducer, state, action);

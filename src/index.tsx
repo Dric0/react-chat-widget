@@ -20,7 +20,7 @@ type Props = {
   profileAvatar?: string;
   launcher?: AnyFunction;
   handleTextInputChange?: (event: any) => void;
-  chatId?: string;
+  chatId: string;
   launcherOpenLabel?: string,
   launcherCloseLabel?: string,
   sendButtonAlt?: string;
@@ -34,6 +34,7 @@ type Props = {
   onChatScroll?: AnyFunction;
   avoidScrollToBottom?: boolean;
   dataSource?: Array<any>;
+  inlineMode?: boolean;
 } & typeof defaultProps;
 
 function ConnectedWidget({
@@ -63,6 +64,7 @@ function ConnectedWidget({
   onChatScroll,
   avoidScrollToBottom,
   dataSource,
+  inlineMode,
 }: Props) {
   return (
     <Provider store={store}>
@@ -93,6 +95,7 @@ function ConnectedWidget({
         onChatScroll={onChatScroll}
         avoidScrollToBottom={avoidScrollToBottom}
         dataSource={dataSource}
+        inlineMode={inlineMode}
       />
     </Provider>
   );
