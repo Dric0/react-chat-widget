@@ -37,7 +37,7 @@ const messagesReducer = {
 
   [DROP_MESSAGES]: (state: MessagesState, { chatId }) => ({ ...state, [chatId]: { ...state[chatId], messages: [] }}),
 
-  [HIDE_AVATAR]: (state: MessagesState, { chatId, index }) => state[chatId].messages[index].showAvatar = false,
+  [HIDE_AVATAR]: (state: MessagesState, { chatId, index }) => (state[chatId]?.messages || [])[index].showAvatar = false,
 
   [DELETE_MESSAGES]: (state: MessagesState, { chatId, count, id }) =>
     ({
@@ -45,15 +45,15 @@ const messagesReducer = {
       [chatId]: {
         ...state[chatId],
         messages: id ?
-          state[chatId].messages.filter(message => message.customId !== id) :
-          state[chatId].messages.splice(state[chatId].messages.length - 1, count)
+          (state[chatId]?.messages || []).filter(message => message.customId !== id) :
+          (state[chatId]?.messages || []).splice((state[chatId]?.messages || []).length - 1, count)
       },
     }),
 
   [SET_BADGE_COUNT]: (state: MessagesState, { chatId, count }) => ({ ...state, [chatId]: { ...state[chatId], badgeCount: count }}),
 
   [MARK_ALL_READ]: (state: MessagesState, { chatId }) =>
-    ({ ...state, [chatId]: { ...state[chatId], messages: state[chatId].messages.map(message => ({ ...message, unread: false})), badgeCount: 0 }})
+    ({ ...state, [chatId]: { ...state[chatId], messages: (state[chatId]?.messages || []).map(message => ({ ...message, unread: false})), badgeCount: 0 }})
 }
 
 export default (state = initialState, action: MessagesActions) => createReducer(messagesReducer, state, action);
