@@ -8,6 +8,7 @@ const send = require('../../../../../../../assets/send_button.svg') as string;
 import './style.scss';
 
 type Props = {
+  chatId: string;
   placeholder: string;
   disabledInput: boolean;
   autofocus: boolean;
@@ -16,8 +17,8 @@ type Props = {
   onTextInputChange?: (event: any) => void;
 }
 
-function Sender({ sendMessage, placeholder, disabledInput, autofocus, onTextInputChange, buttonAlt }: Props) {
-  const showChat = useSelector((state: GlobalState) => state.behavior.showChat);
+function Sender({ chatId, sendMessage, placeholder, disabledInput, autofocus, onTextInputChange, buttonAlt }: Props) {
+  const showChat = useSelector((state: GlobalState) => state.behavior?.[chatId]?.showChat || false);
   const inputRef = useRef(null);
   // @ts-ignore
   useEffect(() => { if (showChat && autofocus) inputRef.current?.focus(); }, [showChat]);

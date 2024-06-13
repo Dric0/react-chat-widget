@@ -37,11 +37,7 @@ export interface CustomCompMessage extends BaseMessage {
   props: any;
 }
 
-export interface BehaviorState {
-  showChat: boolean;
-  disabledInput: boolean;
-  messageLoader: boolean;
-};
+export interface BehaviorState {};
 
 export interface MessagesState {
   messages: (Message | Link | CustomCompMessage)[];

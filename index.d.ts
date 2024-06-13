@@ -6,35 +6,35 @@ import { ElementType } from 'react';
 
 declare const Widget: ElementType;
 
-export function addUserMessage(text: string): void;
-export function addUserMessage(text: string, id: string): void;
+export function addUserMessage(chatId: string ,text: string): void;
+export function addUserMessage(chatId: string, text: string, id: string): void;
 
-export function addOlderMessages(component: ElementType, props: any): void;
-export function addOlderMessages(component: ElementType, props: any, showAvatar: boolean): void;
-export function addOlderMessages(component: ElementType, props: any, showAvatar: boolean, id: string): void;
+export function addOlderMessages(chatId: string, component: ElementType, props: any): void;
+export function addOlderMessages(chatId: string, component: ElementType, props: any, showAvatar: boolean): void;
+export function addOlderMessages(chatId: string, component: ElementType, props: any, showAvatar: boolean, id: string): void;
 
-export function addResponseMessage(text: string): void;
-export function addResponseMessage(text: string, id: string): void;
+export function addResponseMessage(chatId: string, text: string): void;
+export function addResponseMessage(chatId: string, text: string, id: string): void;
 
-export function addLinkSnippet(link: { link: string, title: string, target?: string }): void;
-export function addLinkSnippet(link: { link: string, title: string, target?: string }, id: string): void;
+export function addLinkSnippet(chatId: string, link: { link: string, title: string, target?: string }): void;
+export function addLinkSnippet(chatId: string, link: { link: string, title: string, target?: string }, id: string): void;
 
-export function renderCustomComponent(component: ElementType, props: any): void;
-export function renderCustomComponent(component: ElementType, props: any, showAvatar: boolean): void;
-export function renderCustomComponent(component: ElementType, props: any, showAvatar: boolean, id: string): void;
+export function renderCustomComponent(chatId: string, component: ElementType, props: any): void;
+export function renderCustomComponent(chatId: string, component: ElementType, props: any, showAvatar: boolean): void;
+export function renderCustomComponent(chatId: string, component: ElementType, props: any, showAvatar: boolean, id: string): void;
 
-export function toggleMsgLoader(): void;
-export function toggleWidget(): void;
-export function toggleInputDisabled(): void;
-export function dropMessages(): void;
-export function isWidgetOpened(): boolean;
-export function setQuickButtons(buttons: Array<{ label: string, value: string | number }>): void;
-export function resetBehavior(): void;
+export function toggleMsgLoader(chatId: string): void;
+export function toggleWidget(chatId: string): void;
+export function toggleInputDisabled(chatId: string): void;
+export function dropMessages(chatId: string): void;
+export function isWidgetOpened(chatId: string): boolean;
+export function setQuickButtons(chatId: string, buttons: Array<{ label: string, value: string | number }>): void;
+export function resetBehavior(chatId: string): void;
 
-export function deleteMessages(count: number): void;
-export function deleteMessages(count: number, id: string): void;
+export function deleteMessages(chatId: string, count: number): void;
+export function deleteMessages(chatId: string, count: number, id: string): void;
 
-export function markAllAsRead(): void;
-export function setBadgeCount(count: number): void;
+export function markAllAsRead(chatId: string): void;
+export function setBadgeCount(chatId: string, count: number): void;
 
 export as namespace ReactChatWidget;

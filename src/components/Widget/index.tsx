@@ -33,6 +33,7 @@ type Props = {
   onChatScroll?: AnyFunction;
   avoidScrollToBottom?: boolean;
   dataSource?: Array<any>;
+  inlineMode?: boolean;
 }
 
 function Widget({
@@ -62,11 +63,12 @@ function Widget({
   onChatScroll,
   avoidScrollToBottom,
   dataSource,
+  inlineMode,
 }: Props) {
   const dispatch = useDispatch();
 
   const toggleConversation = () => {
-    dispatch(toggleChat());
+    dispatch(toggleChat(chatId));
   }
 
   const handleMessageSubmit = (event) => {
@@ -79,7 +81,7 @@ function Widget({
     
     handleSubmit?.(userInput);
     if (!ignoreNewUserMessage) {
-      dispatch(addUserMessage(userInput));
+      dispatch(addUserMessage(chatId, userInput));
     }
     handleNewUserMessage(userInput);
     event.target.message.value = '';
@@ -117,6 +119,7 @@ function Widget({
       onChatScroll={onChatScroll}
       avoidScrollToBottom={avoidScrollToBottom}
       dataSource={dataSource}
+      inlineMode={inlineMode}
     />
   );
 }

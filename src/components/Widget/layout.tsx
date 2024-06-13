@@ -38,6 +38,7 @@ type Props = {
   onChatScroll?: AnyFunction;
   avoidScrollToBottom?: boolean;
   dataSource?: Array<any>;
+  inlineMode?: boolean;
 }
 
 function WidgetLayout({
@@ -66,11 +67,12 @@ function WidgetLayout({
   onChatScroll,
   avoidScrollToBottom,
   dataSource,
+  inlineMode,
 }: Props) {
   const dispatch = useDispatch();
   const { dissableInput, showChat, visible } = useSelector((state: GlobalState) => ({
-    showChat: state.behavior.showChat,
-    dissableInput: state.behavior.disabledInput,
+    showChat: state.behavior?.[chatId]?.showChat || false,
+    dissableInput: state.behavior?.[chatId]?.disabledInput || false,
     visible: state.preview.visible,
   }));
 
@@ -121,12 +123,13 @@ function WidgetLayout({
       className={cn('rcw-widget-container', {
         'rcw-full-screen': fullScreenMode,
         'rcw-previewer': imagePreview,
-        'hide-chat': !showChat,
-        'show-chat': showChat
+        'hide-chat': !showChat && !inlineMode,
+        'show-chat': showChat || inlineMode,
+        'inline-mode': inlineMode
         })
       }
     >
-      {showChat &&
+      {showChat || inlineMode ? (
         <Conversation
           title={title}
           subtitle={subtitle}
@@ -138,7 +141,7 @@ function WidgetLayout({
           disabledInput={dissableInput}
           autofocus={autofocus}
           titleAvatar={titleAvatar}
-          className={showChat ? 'active' : 'hidden'}
+          className={showChat || inlineMode ? 'active' : 'hidden'}
           onQuickButtonClicked={onQuickButtonClicked}
           onTextInputChange={onTextInputChange}
           sendButtonAlt={sendButtonAlt}
@@ -146,13 +149,15 @@ function WidgetLayout({
           customCloseButton={customCloseButton}
           onChatFocus={onChatFocus}
           onChatScroll={onChatScroll}
+          chatId={chatId}
           avoidScrollToBottom={avoidScrollToBottom}
           dataSource={dataSource}
+          inlineMode={inlineMode}
         />
-      }
+      ) : null}
       {customLauncher ?
         customLauncher(onToggleConversation) :
-        !fullScreenMode &&
+        !fullScreenMode && !inlineMode &&
         <Launcher
           toggle={onToggleConversation}
           chatId={chatId}

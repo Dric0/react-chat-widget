@@ -21,13 +21,13 @@ type Props = {
 function Launcher({ toggle, chatId, openLabel, closeLabel }: Props) {
   const dispatch = useDispatch();
   const { showChat, badgeCount } = useSelector((state: GlobalState) => ({
-    showChat: state.behavior.showChat,
-    badgeCount: state.messages.badgeCount
+    showChat: state.behavior?.[chatId]?.showChat || false,
+    badgeCount: state.messages?.[chatId]?.badgeCount || 0
   }));
 
   const toggleChat = () => {
     toggle();
-    if (!showChat) dispatch(setBadgeCount(0));
+    if (!showChat) dispatch(setBadgeCount(chatId, 0));
   }
 
   return (

@@ -3,33 +3,38 @@ import { ElementType } from 'react';
 import * as actionsTypes from './types';
 import { LinkParams, ImageState } from '../types';
 
-export function toggleChat(): actionsTypes.ToggleChat {
+export function toggleChat(chatId: string): actionsTypes.ToggleChat {
   return {
-    type: actionsTypes.TOGGLE_CHAT
+    type: actionsTypes.TOGGLE_CHAT,
+    chatId
   };
 }
 
-export function resetBehavior(): actionsTypes.ResetBehavior {
+export function resetBehavior(chatId: string): actionsTypes.ResetBehavior {
   return {
-    type: actionsTypes.RESET_BEHAVIOR_REDUCER
+    type: actionsTypes.RESET_BEHAVIOR_REDUCER,
+    chatId
   };
 }
 
-export function toggleInputDisabled(): actionsTypes.ToggleInputDisabled {
+export function toggleInputDisabled(chatId: string): actionsTypes.ToggleInputDisabled {
   return {
-    type: actionsTypes.TOGGLE_INPUT_DISABLED
+    type: actionsTypes.TOGGLE_INPUT_DISABLED,
+    chatId
   };
 }
 
-export function addUserMessage(text: string, id?: string): actionsTypes.AddUserMessage {
+export function addUserMessage(chatId: string, text: string, id?: string): actionsTypes.AddUserMessage {
   return {
     type: actionsTypes.ADD_NEW_USER_MESSAGE,
+    chatId,
     text,
     id
   };
 }
 
 export function addOlderMessages(
+  chatId: string,
   component: ElementType,
   props: any,
   showAvatar: boolean,
@@ -37,6 +42,7 @@ export function addOlderMessages(
 ): actionsTypes.AddOlderMessages {
   return {
     type: actionsTypes.ADD_OLDER_MESSAGES,
+    chatId,
     component,
     props,
     showAvatar,
@@ -44,29 +50,33 @@ export function addOlderMessages(
   };
 }
 
-export function addResponseMessage(text: string, id?: string): actionsTypes.AddResponseMessage {
+export function addResponseMessage(chatId: string, text: string, id?: string): actionsTypes.AddResponseMessage {
   return {
     type: actionsTypes.ADD_NEW_RESPONSE_MESSAGE,
+    chatId,
     text,
     id
   };
 }
 
-export function toggleMsgLoader(): actionsTypes.ToggleMsgLoader {
+export function toggleMsgLoader(chatId: string): actionsTypes.ToggleMsgLoader {
   return {
-    type: actionsTypes.TOGGLE_MESSAGE_LOADER
+    type: actionsTypes.TOGGLE_MESSAGE_LOADER,
+    chatId
   }
 }
 
-export function addLinkSnippet(link: LinkParams, id?: string): actionsTypes.AddLinkSnippet {
+export function addLinkSnippet(chatId: string, link: LinkParams, id?: string): actionsTypes.AddLinkSnippet {
   return {
     type: actionsTypes.ADD_NEW_LINK_SNIPPET,
+    chatId,
     link,
     id
   };
 }
 
 export function renderCustomComponent(
+  chatId: string,
   component: ElementType,
   props: any,
   showAvatar: boolean,
@@ -74,6 +84,7 @@ export function renderCustomComponent(
 ): actionsTypes.RenderCustomComponent {
   return {
     type: actionsTypes.ADD_COMPONENT_MESSAGE,
+    chatId,
     component,
     props,
     showAvatar,
@@ -81,44 +92,50 @@ export function renderCustomComponent(
   };
 }
 
-export function dropMessages(): actionsTypes.DropMessages {
+export function dropMessages(chatId: string): actionsTypes.DropMessages {
   return {
-    type: actionsTypes.DROP_MESSAGES
+    type: actionsTypes.DROP_MESSAGES,
+    chatId
   };
 }
 
-export function hideAvatar(index: number): actionsTypes.HideAvatar {
+export function hideAvatar(chatId: string, index: number): actionsTypes.HideAvatar {
   return {
     type: actionsTypes.HIDE_AVATAR,
+    chatId,
     index
   };
 }
 
-export function setQuickButtons(buttons: Array<{ label: string, value: string | number }>): actionsTypes.SetQuickButtons {
+export function setQuickButtons(chatId: string, buttons: Array<{ label: string, value: string | number }>): actionsTypes.SetQuickButtons {
   return {
     type: actionsTypes.SET_QUICK_BUTTONS,
+    chatId,
     buttons
   }
 }
 
-export function deleteMessages(count: number, id?: string): actionsTypes.DeleteMessages {
+export function deleteMessages(chatId: string, count: number, id?: string): actionsTypes.DeleteMessages {
   return {
     type: actionsTypes.DELETE_MESSAGES,
+    chatId,
     count,
     id
   }
 }
 
-export function setBadgeCount(count: number): actionsTypes.SetBadgeCount {
+export function setBadgeCount(chatId: string, count: number): actionsTypes.SetBadgeCount {
   return {
     type: actionsTypes.SET_BADGE_COUNT,
+    chatId,
     count
   }
 }
 
-export function markAllMessagesRead(): actionsTypes.MarkAllMessagesRead {
+export function markAllMessagesRead(chatId: string): actionsTypes.MarkAllMessagesRead {
   return {
-    type: actionsTypes.MARK_ALL_READ
+    type: actionsTypes.MARK_ALL_READ,
+    chatId
   }
 }
 
